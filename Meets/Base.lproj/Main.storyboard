@@ -724,7 +724,7 @@ among other features. </string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GmN-qN-l4p" kind="presentation" identifier="EditAppSegue" id="jnb-Pc-L9M"/>
+                                    <segue destination="UHH-J9-1W2" kind="presentation" identifier="EditAppointment" id="zIM-VU-90j"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -739,7 +739,7 @@ among other features. </string>
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="CXd-GN-5Qs"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NAR-ar-jua">
                             <connections>
-                                <segue destination="UHH-J9-1W2" kind="presentation" id="Zov-ow-fEG"/>
+                                <segue destination="UHH-J9-1W2" kind="presentation" identifier="" id="Zov-ow-fEG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1110,39 +1110,10 @@ among other features. </string>
             </objects>
             <point key="canvasLocation" x="9168" y="-1852"/>
         </scene>
-        <!--EditAppNavigationController-->
-        <scene sceneID="IJT-BT-MNt">
-            <objects>
-                <navigationController storyboardIdentifier="editcell" id="GmN-qN-l4p" userLabel="EditAppNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cPW-VP-uQp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6GF-Hn-zy4" kind="relationship" relationship="rootViewController" id="c7P-Ai-v3k"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fzg-oS-Ylg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8216" y="-1129"/>
-        </scene>
-        <!--View appointment-->
-        <scene sceneID="lt4-JJ-aIK">
-            <objects>
-                <viewController id="6GF-Hn-zy4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TQB-oU-Nhz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="g7Z-gr-QB9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="View appointment" id="4JP-9S-FVk"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EPM-81-Xfq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9058" y="-1125"/>
-        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zIM-VU-90j"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="generic-city-map-pin-148537097" width="800" height="437"/>
         <systemColor name="darkTextColor">

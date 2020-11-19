@@ -33,7 +33,10 @@
          contextName = "AddAppointmentTableViewController.prepare(for:sender:):AddAppointmentTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "print(pickerView.date)">
+               value = "pickerView">
+            </PersistentString>
+            <PersistentString
+               value = "pickerView.date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

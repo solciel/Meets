@@ -58,11 +58,13 @@ class AppointmentsTableViewController: UITableViewController {
         return true
     }
     
+   /* previously used to view appointment
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "EditAppSegue", sender: nil)
         
     }
+    */
     
 
     // Override to support editing the table view.
@@ -81,19 +83,42 @@ class AppointmentsTableViewController: UITableViewController {
     @IBAction func unwindToToDoList(segue: UIStoryboardSegue) {
         
         guard segue.identifier == "saveUnwind" else { return }
-            let sourceViewController = segue.source as!
-            AddAppointmentTableViewController
+        let sourceViewController = segue.source as!
+        AddAppointmentTableViewController
         
-            if let appointment = sourceViewController.currentAppointment {
+        if let appointment = sourceViewController.currentAppointment {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                appointments[selectedIndexPath.row] = appointment
+                            tableView.reloadRows(at: [selectedIndexPath],
+                            with: .none)
+            }
+            else {
                 let newIndexPath = IndexPath(row: appointments.count, section: 0)
                 appointments.append(appointment)
                 appointments.sort(by: {$0.dateCode > $1.dateCode})
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
                 self.tableView.reloadData()
-                    }
-                }
-        
+            }
+            
+        }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditAppointment",
+            let navController = segue.destination as?
+            UINavigationController,
+            let AddAppointmentTableViewController =
+            navController.topViewController as?
+            AddAppointmentTableViewController {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedApp = appointments[indexPath.row]
+            AddAppointmentTableViewController.currentAppointment = selectedApp
+        }
+    }
+    
+    
+}
 
 
 

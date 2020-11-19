@@ -117,12 +117,30 @@ class AddAppointmentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerView.date = Date().addingTimeInterval(24*60*60)
+        
+        if let currentAppointment = currentAppointment {
+            navigationItem.title = "View Appointment"
+            meetingTitle.text = currentAppointment.appointmentTitle
+            lastName.text = currentAppointment.lastName
+            firstName.text! = currentAppointment.firstName
+            companyName.text = currentAppointment.companyName
+            companyAddress.text = currentAppointment.address
+            companyDescription.text = currentAppointment.companyDescription
+            companyPhoneNumber.text = currentAppointment.phoneNumber
+            companyWebsite.text = currentAppointment.website
+            pickerView.date = currentAppointment.dateCode
+            meetingDescription.text = currentAppointment.meetingDescription
+            
+
+        }
+        else {
+            pickerView.date = Date().addingTimeInterval(24*60*60)
+        }
+        
+        
         updateTimeDisplayed(date: pickerView.date)
         updateSaveButtonState()
         
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
