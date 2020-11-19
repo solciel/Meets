@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,9 +19,11 @@
 		61EDBFB8255C0E4E00BDAB2B /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EDBFB7255C0E4E00BDAB2B /* Switch.swift */; };
 		61EDBFBD255C817F00BDAB2B /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EDBFBC255C817E00BDAB2B /* Appointment.swift */; };
 		61EDBFC1255C859D00BDAB2B /* AppointmentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EDBFC0255C859D00BDAB2B /* AppointmentsTableViewController.swift */; };
+		7A173031F5FE914AEC2C7809 /* Pods_Meets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E8179FEE308027012F833F /* Pods_Meets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F92B81FBD4F492BF0377C72 /* Pods-Meets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meets.release.xcconfig"; path = "Target Support Files/Pods-Meets/Pods-Meets.release.xcconfig"; sourceTree = "<group>"; };
 		615D8A75255D1D3500595641 /* AddAppointmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		61EDBC1D254AEDB1004FEB3B /* Meets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61EDBC20254AEDB1004FEB3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		61EDBFB7255C0E4E00BDAB2B /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		61EDBFBC255C817E00BDAB2B /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		61EDBFC0255C859D00BDAB2B /* AppointmentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewController.swift; sourceTree = "<group>"; };
+		A6E8179FEE308027012F833F /* Pods_Meets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0A5D842296028AD2BFC2A30 /* Pods-Meets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meets.debug.xcconfig"; path = "Target Support Files/Pods-Meets/Pods-Meets.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A173031F5FE914AEC2C7809 /* Pods_Meets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39E1A5009727D2BA62340E80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6E8179FEE308027012F833F /* Pods_Meets.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		61EDBC14254AEDB1004FEB3B = {
 			isa = PBXGroup;
 			children = (
 				61EDBC1F254AEDB1004FEB3B /* Meets */,
 				61EDBC1E254AEDB1004FEB3B /* Products */,
+				F23AF59B13447FB6900E89D6 /* Pods */,
+				39E1A5009727D2BA62340E80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +116,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F23AF59B13447FB6900E89D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0A5D842296028AD2BFC2A30 /* Pods-Meets.debug.xcconfig */,
+				0F92B81FBD4F492BF0377C72 /* Pods-Meets.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61EDBC31254AEDB4004FEB3B /* Build configuration list for PBXNativeTarget "Meets" */;
 			buildPhases = (
+				A264505A938DA9F30677BB66 /* [CP] Check Pods Manifest.lock */,
 				61EDBC19254AEDB1004FEB3B /* Sources */,
 				61EDBC1A254AEDB1004FEB3B /* Frameworks */,
 				61EDBC1B254AEDB1004FEB3B /* Resources */,
+				F9689452831495EE07C7674B /* [CP] Embed Pods Frameworks */,
+				D30BBB7EC4347FE830FCFDE3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,6 +193,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A264505A938DA9F30677BB66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D30BBB7EC4347FE830FCFDE3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9689452831495EE07C7674B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meets/Pods-Meets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		61EDBC19254AEDB1004FEB3B /* Sources */ = {
@@ -322,9 +408,15 @@
 		};
 		61EDBC32254AEDB4004FEB3B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0A5D842296028AD2BFC2A30 /* Pods-Meets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+				);
 				INFOPLIST_FILE = Meets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,9 +431,15 @@
 		};
 		61EDBC33254AEDB4004FEB3B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F92B81FBD4F492BF0377C72 /* Pods-Meets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+				);
 				INFOPLIST_FILE = Meets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

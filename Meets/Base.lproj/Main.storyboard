@@ -240,6 +240,7 @@ among other features. </string>
         <!--HomeViewController-->
         <scene sceneID="NWG-y3-Zoa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-rv-ugX" sceneMemberID="firstResponder"/>
                 <viewController id="pCx-Wl-IVt" userLabel="HomeViewController" customClass="HomeViewController" customModule="Meets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nqP-4v-rx0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -282,7 +283,7 @@ among other features. </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-CF-6vd">
-                                <rect key="frame" x="63" y="361" width="288" height="30"/>
+                                <rect key="frame" x="1" y="742" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -290,14 +291,30 @@ among other features. </string>
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rm3-4T-Klp" customClass="GIDSignInButton">
+                                <rect key="frame" x="79" y="307" width="257" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xq2-zo-Opx">
+                                <rect key="frame" x="112" y="430" width="190" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign out of Gmail"/>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="pCx-Wl-IVt" eventType="touchUpInside" id="Vd4-QY-fDY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XJk-5r-BmB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="NP3-Cc-nSg"/>
                     <navigationItem key="navigationItem" id="LAM-VW-9I9"/>
+                    <connections>
+                        <outlet property="signInButton" destination="Rm3-4T-Klp" id="t96-W7-9wr"/>
+                        <outlet property="signOutButton" destination="Xq2-zo-Opx" id="FaN-tA-ppl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-rv-ugX" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6189.8550724637689" y="-2431.4732142857142"/>
         </scene>
