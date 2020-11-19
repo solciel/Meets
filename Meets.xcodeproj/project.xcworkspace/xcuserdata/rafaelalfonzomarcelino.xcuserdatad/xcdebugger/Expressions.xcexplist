@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Appointment.init(company:firstName:lastName:year:month:day:hour:):Appointment.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.appointmentTitle">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(_:didFinishLaunchingWithOptions:):AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UserDefaults.standard.bool(forKey:&quot;loggedIn&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppointmentsTableViewController.unwindToToDoList(segue:):AppointmentsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "appointments[0].dateCode">
+            </PersistentString>
+            <PersistentString
+               value = "appointments[1].dateCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddAppointmentTableViewController.prepare(for:sender:):AddAppointmentTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "print(pickerView.date)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
