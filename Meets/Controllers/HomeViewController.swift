@@ -24,6 +24,11 @@ class HomeViewController: UIViewController {
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
+        NotificationCenter.default.addObserver(self,
+                selector: #selector(self.receiveToggleAuthUINotification(_:)),
+                name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
+                object: nil)
+        
         toggleAuthUI()
         
         
@@ -60,4 +65,10 @@ class HomeViewController: UIViewController {
         // [END_EXCLUDE]
       }
     
+    @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
+        if notification.name.rawValue == "ToggleAuthUINotification" {
+          self.toggleAuthUI()
+        
+          }
+        }
 }
