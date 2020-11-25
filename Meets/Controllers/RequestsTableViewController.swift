@@ -119,10 +119,19 @@ class RequestsTableViewController: UITableViewController {
                         
                         let newIndexPath = IndexPath(row: self.appointments.count, section: 0)
                         
-                        self.appointments.append(currentAppointment)
+                        var found = false;
+                        for appointment in self.appointments {
+                            if(appointment.appointmentTitle == currentAppointment.appointmentTitle) {
+                                found = true;
+                            }
+                        }
+                        if(!found) {
+                            self.appointments.append(currentAppointment)
+                            
+                            self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                            self.tableView.reloadData()
+                        }
                         
-                        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
-                        self.tableView.reloadData()
                     }
                     
                 }
