@@ -30,13 +30,32 @@ class RequestsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return appointments.count
     }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RequestIdentifier", for: indexPath)
+
+        let appointment = appointments[indexPath.row]
+        cell.textLabel?.text = appointment.appointmentTitle
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
+
+        return cell
+    }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     
     
     @IBAction func updateRequests(_ sender: Any) {
@@ -92,7 +111,18 @@ class RequestsTableViewController: UITableViewController {
                         let hour = parseHour(mesgBody!)
                         let day = parseDay(mesgBody!)
                         let month = parseMonth(mesgBody!)
-                        print("Date: " + month + " " + day + " " + hour)
+                        let totalDate = month + " " + day + " at " + hour
+                        print(totalDate)
+                        
+                        //add to appointents array
+                        let currentAppointment = Appointment(companyName: "", companyDescription: "", firstName: "Rafael", lastName: "Alfonzo", address: "", date: totalDate, phoneNumber: "", website: "", type: AppointmentType.once, meetingDescription: "", appointmentTitle: "Rafael on " + totalDate, dateCode: Date())
+                        
+                        let newIndexPath = IndexPath(row: self.appointments.count, section: 0)
+                        
+                        self.appointments.append(currentAppointment)
+                        
+                        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                        self.tableView.reloadData()
                     }
                     
                 }

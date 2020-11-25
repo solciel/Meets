@@ -14,8 +14,8 @@
             filePath = "Meets/Controllers/RequestsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getInboxMessages()"
             landmarkType = "7">
          </BreakpointContent>

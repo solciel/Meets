@@ -204,13 +204,16 @@ among other features. </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nRx-4k-tQ8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestIdentifier" id="nRx-4k-tQ8" userLabel="RequestIdentifier">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nRx-4k-tQ8" id="m2N-y2-CoK">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="p4T-Hj-WoA" kind="presentation" id="9E0-MW-Lhs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -218,16 +221,13 @@ among other features. </string>
                             <outlet property="delegate" destination="Vq1-WN-Bsr" id="alZ-6g-2g7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Fzf-VB-3Gm">
+                    <navigationItem key="navigationItem" title="View Requests" id="Fzf-VB-3Gm">
                         <barButtonItem key="rightBarButtonItem" title="Refresh" id="6wz-OC-esL">
                             <connections>
                                 <action selector="updateRequests:" destination="Vq1-WN-Bsr" id="gEN-8z-tjW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="p4T-Hj-WoA" kind="presentation" id="BAk-Wb-0QC"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USm-IS-rDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -256,7 +256,7 @@ among other features. </string>
                             <outlet property="delegate" destination="KQi-Wc-Y6A" id="NYK-qM-cqn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="GtP-h0-9Lb"/>
+                    <navigationItem key="navigationItem" title="View Request" id="GtP-h0-9Lb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mED-Hj-j8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -759,8 +759,8 @@ among other features. </string>
                     <connections>
                         <segue destination="pCx-Wl-IVt" kind="relationship" relationship="viewControllers" id="el1-uJ-ctn"/>
                         <segue destination="KgS-b8-TzR" kind="relationship" relationship="viewControllers" id="ieb-bH-FsR"/>
-                        <segue destination="gy3-ey-Eiy" kind="relationship" relationship="viewControllers" id="RQY-dB-FyT"/>
                         <segue destination="ZW0-8V-1GA" kind="relationship" relationship="viewControllers" id="H7g-zs-PVR"/>
+                        <segue destination="gy3-ey-Eiy" kind="relationship" relationship="viewControllers" id="RQY-dB-FyT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK8-K9-gvc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
