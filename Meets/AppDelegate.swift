@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Initialize sign-in
+        let scopes = ["https://mail.google.com/"]//services to be used
+        
           GIDSignIn.sharedInstance().clientID = "1079553011975-e84l8f23dv1d76covt9pa46ga4sn4qb5.apps.googleusercontent.com"
           GIDSignIn.sharedInstance().delegate = self
+          GIDSignIn.sharedInstance()?.scopes = scopes
         
         return true
     }
@@ -59,6 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       let familyName = user.profile.familyName
       let email = user.profile.email
     
+        if let token = idToken {
+            UserDefaults.standard.set(token, forKey: "token")
+        }
+        if let firstname = givenName {
+            UserDefaults.standard.set(firstname, forKey: "firstName")
+        }
+        if let lastname = familyName {
+            UserDefaults.standard.set(lastname, forKey: "lastName")
+        }
+      
+    
+        
         NotificationCenter.default.post(
               name: Notification.Name(rawValue: "ToggleAuthUINotification"),
               object: nil,

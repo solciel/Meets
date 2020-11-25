@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import GoogleAPIClientForREST
+import GoogleSignIn
+import GTMSessionFetcher
 
 class RequestsTableViewController: UITableViewController {
+    
+    
+    var appointments = [Appointment]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +37,42 @@ class RequestsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
+    
+    
+    @IBAction func updateRequests(_ sender: Any) {
+        getInboxMessages()
+        
+    }
+    
+    func getInboxMessages() {
+        let gmailService = GTLRGmailService.init()
+            
+        let listQuery = GTLRGmailQuery_UsersMessagesList.query(withUserId: "me")
+        listQuery.labelIds = ["INBOX"]
+        
+        let authorizer = GIDSignIn.sharedInstance()?.currentUser?.authentication?.fetcherAuthorizer()
+        gmailService.authorizer = authorizer
+     
+        gmailService.executeQuery(listQuery) { (ticket, response, error) in
+            if response != nil {
+                print("Response: ")
+                print(response)
+                self.getFirstMessageIdFromMessages(response: response as! GTLRGmail_ListMessagesResponse)
+            } else {
+                print("Error: ")
+                print(error)
+            }
+        }
+    }
+    
+    func getFirstMessageIdFromMessages(response: GTLRGmail_ListMessagesResponse) {
+        let messagesResponse = response as GTLRGmail_ListMessagesResponse
+        print("Latest Message: ")
+        print(messagesResponse.messages![0].identifier)
+    }
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

@@ -9,5 +9,6 @@ target 'Meets' do
 
   # Pods for Meets
   pod 'GoogleSignIn'
+  pod 'GoogleAPIClientForREST/Gmail'
 
 end

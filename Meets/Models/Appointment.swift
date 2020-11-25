@@ -44,6 +44,7 @@ struct Appointment {
     
     static func loadAppointments() -> [Appointment]? {
         return nil
+        //TODO: load from disk
     }
     
     static func loadSampleAppointments() -> [Appointment] {
