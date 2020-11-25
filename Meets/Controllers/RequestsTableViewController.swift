@@ -88,11 +88,52 @@ class RequestsTableViewController: UITableViewController {
                     if let decodedBody = Data(base64Encoded: formattedEncodedBody, options: .ignoreUnknownCharacters){
                         let mesgBody = String(data: decodedBody, encoding: .utf8);
                         print(mesgBody);
+                        print("\n")
+                        let hour = parseHour(mesgBody!)
+                        let day = parseDay(mesgBody!)
+                        let month = parseMonth(mesgBody!)
+                        print("Date: " + month + " " + day + " " + hour)
                     }
                     
                 }
             }
             
+            
+        }
+        
+        func parseHour(_ emailBody: String) -> String {
+            
+            let emailArray = emailBody.components(separatedBy: " ")
+            
+            for index in 0...(emailArray.count - 1) {
+                if(emailArray[index].lowercased() == "p.m." || emailArray[index].lowercased() == "a.m.") {
+                    return (emailArray[index - 1] + emailArray[index])
+                }
+            }
+            return ""
+        }
+        
+        func parseDay(_ emailBody: String) -> String {
+            
+            let emailArray = emailBody.components(separatedBy: " ")
+            
+            for index in 0...(emailArray.count - 1) {
+                if(Int(emailArray[index]) != nil) {
+                    return emailArray[index]
+                }
+            }
+            return ""
+        }
+        
+        func parseMonth(_ emailBody: String) -> String {
+            
+            let emailArray = emailBody.components(separatedBy: " ")
+            for word in emailArray {
+                if (word == "January" || word == "February") {
+                    return word
+                }
+            }
+            return ""
             
         }
         
