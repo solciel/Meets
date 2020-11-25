@@ -57,7 +57,7 @@ class RequestsTableViewController: UITableViewController {
             if response != nil {
                 print("Response: ")
                 print(response)
-                self.getFirstMessageIdFromMessages(response: response as! GTLRGmail_ListMessagesResponse)
+                self.processMessages(response: response as! GTLRGmail_ListMessagesResponse, service: gmailService)
             } else {
                 print("Error: ")
                 print(error)
@@ -65,10 +65,37 @@ class RequestsTableViewController: UITableViewController {
         }
     }
     
-    func getFirstMessageIdFromMessages(response: GTLRGmail_ListMessagesResponse) {
+    func processMessages(response: GTLRGmail_ListMessagesResponse, service: GTLRGmailService) {
         let messagesResponse = response as GTLRGmail_ListMessagesResponse
-        print("Latest Message: ")
-        print(messagesResponse.messages![0].identifier)
+        
+        for message in messagesResponse.messages! {
+            let query = GTLRGmailQuery_UsersMessagesGet.query(withUserId: "me", identifier: message.identifier!)
+            service.executeQuery(query) { (ticket, response, error) in
+                var emails = response as! GTLRGmail_Message
+                let parts = emails.payload?.parts?.filter({ (part) -> Bool in
+                    if part.mimeType == "text/plain"{
+                        return true
+                    }
+                    return false
+                })
+                for part in parts! {
+                    print("email data:");
+                    let encodedBody = part.body!.data!
+                    print(encodedBody + "\n\n")
+                    
+                    let formattedEncodedBody = encodedBody.replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
+                    
+                    if let decodedBody = Data(base64Encoded: formattedEncodedBody, options: .ignoreUnknownCharacters){
+                        let mesgBody = String(data: decodedBody, encoding: .utf8);
+                        print(mesgBody);
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        
     }
     
     
