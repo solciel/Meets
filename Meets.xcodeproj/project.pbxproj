@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613DF411257559D300B9E852 /* ViewRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613DF410257559D300B9E852 /* ViewRequestsTableViewController.swift */; };
 		615D8A76255D1D3500595641 /* AddAppointmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615D8A75255D1D3500595641 /* AddAppointmentTableViewController.swift */; };
 		61D51716256E6E9B00BE0670 /* RequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D51715256E6E9B00BE0670 /* RequestsTableViewController.swift */; };
 		61EDBC21254AEDB1004FEB3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EDBC20254AEDB1004FEB3B /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		0F92B81FBD4F492BF0377C72 /* Pods-Meets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meets.release.xcconfig"; path = "Target Support Files/Pods-Meets/Pods-Meets.release.xcconfig"; sourceTree = "<group>"; };
+		613DF410257559D300B9E852 /* ViewRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRequestsTableViewController.swift; sourceTree = "<group>"; };
 		615D8A75255D1D3500595641 /* AddAppointmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		61D51715256E6E9B00BE0670 /* RequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewController.swift; sourceTree = "<group>"; };
 		61EDBC1D254AEDB1004FEB3B /* Meets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				61EDBFC0255C859D00BDAB2B /* AppointmentsTableViewController.swift */,
 				615D8A75255D1D3500595641 /* AddAppointmentTableViewController.swift */,
 				61D51715256E6E9B00BE0670 /* RequestsTableViewController.swift */,
+				613DF410257559D300B9E852 /* ViewRequestsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				61D51716256E6E9B00BE0670 /* RequestsTableViewController.swift in Sources */,
 				61EDBFB1255C080600BDAB2B /* LoginViewController.swift in Sources */,
 				61EDBC25254AEDB1004FEB3B /* ViewController.swift in Sources */,
+				613DF411257559D300B9E852 /* ViewRequestsTableViewController.swift in Sources */,
 				61EDBC21254AEDB1004FEB3B /* AppDelegate.swift in Sources */,
 				61EDBC23254AEDB1004FEB3B /* SceneDelegate.swift in Sources */,
 			);

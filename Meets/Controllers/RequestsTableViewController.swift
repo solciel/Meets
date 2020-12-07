@@ -13,7 +13,7 @@ import GTMSessionFetcher
 
 class RequestsTableViewController: UITableViewController {
     
-    
+    var currentMessageID = ""
     var appointments = [Appointment]()
 
     override func viewDidLoad() {
@@ -91,6 +91,9 @@ class RequestsTableViewController: UITableViewController {
             let query = GTLRGmailQuery_UsersMessagesGet.query(withUserId: "me", identifier: message.identifier!)
             service.executeQuery(query) { (ticket, response, error) in
                 var emails = response as! GTLRGmail_Message
+                
+                self.currentMessageID = emails.identifier!
+                
                 let parts = emails.payload?.parts?.filter({ (part) -> Bool in
                     if part.mimeType == "text/plain"{
                         return true
@@ -115,13 +118,14 @@ class RequestsTableViewController: UITableViewController {
                         print(totalDate)
                         
                         //add to appointents array
-                        let currentAppointment = Appointment(companyName: "", companyDescription: "", firstName: "Rafael", lastName: "Alfonzo", address: "", date: totalDate, phoneNumber: "", website: "", type: AppointmentType.once, meetingDescription: "", appointmentTitle: "Rafael on " + totalDate, dateCode: Date())
+                        var currentAppointment = Appointment(companyName: "", companyDescription: "", firstName: "Rafael", lastName: "Alfonzo", address: "", date: totalDate, phoneNumber: "", website: "", type: AppointmentType.once, meetingDescription: "", appointmentTitle: "Rafael on " + totalDate, dateCode: Date())
+                        currentAppointment.id = self.currentMessageID
                         
                         let newIndexPath = IndexPath(row: self.appointments.count, section: 0)
                         
                         var found = false;
                         for appointment in self.appointments {
-                            if(appointment.appointmentTitle == currentAppointment.appointmentTitle) {
+                            if(appointment.id == currentAppointment.id) {
                                 found = true;
                             }
                         }
@@ -178,7 +182,49 @@ class RequestsTableViewController: UITableViewController {
         
     }
     
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            appointments.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
+            
+        }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editRequest",
+            let navController = segue.destination as?
+            UINavigationController,
+            let AddAppointmentTableViewController =
+            navController.topViewController as?
+            AddAppointmentTableViewController {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedApp = appointments[indexPath.row]
+            AddAppointmentTableViewController.currentAppointment = selectedApp
+            AddAppointmentTableViewController.isRequest = true
+            AddAppointmentTableViewController.requestsController = self
+            AddAppointmentTableViewController.currentAppointmentID = selectedApp.id
+        }
+    }
+    
+    func updateList(id: String) {
+        
+        for index in 0...(appointments.count - 1) {
+            if(appointments[index].id == id) {
+                appointments.remove(at: index)
+                break
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

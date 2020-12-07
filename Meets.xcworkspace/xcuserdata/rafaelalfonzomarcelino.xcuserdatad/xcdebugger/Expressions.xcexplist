@@ -3,6 +3,22 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "AddAppointmentTableViewController.prepare(for:sender:):AddAppointmentTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentAppointmentID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RequestsTableViewController.getInboxMessages():RequestsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "HomeViewController.toggleAuthUI():HomeViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -14,10 +30,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RequestsTableViewController.getInboxMessages():RequestsTableViewController.swift">
+         contextName = "RequestsTableViewController.updateList(id:):RequestsTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response">
+               value = "id">
+            </PersistentString>
+            <PersistentString
+               value = "appointments">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RequestsTableViewController.prepare(for:sender:):RequestsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentMessageID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in RequestsTableViewController.processMessages(response:service:):RequestsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "emails.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "emails.payload">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

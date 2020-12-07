@@ -1,130 +1,53 @@
+/*
+
 //
-//  AddAppointmentTableViewController.swift
+//  ViewRequestsTableViewController.swift
 //  Meets
 //
-//  Created by Rafael Alfonzo Marcelino on 11/12/20.
+//  Created by Rafael Alfonzo Marcelino on 11/30/20.
 //  Copyright © 2020 Rafael Alfonzo. All rights reserved.
 //
 
 import UIKit
 
-class AddAppointmentTableViewController: UITableViewController {
-    
-    var currentAppointmentID = ""
-    var requestsController: RequestsTableViewController?
-    var isRequest = false;
+class ViewRequestsTableViewController: UITableViewController {
     var currentAppointment : Appointment?
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var meetingTitle: UITextField!
-    @IBOutlet weak var lastName: UITextField!
+    
     @IBOutlet weak var firstName: UITextField!
+    
+    @IBOutlet weak var lastName: UITextField!
+    
+    
     @IBOutlet weak var companyName: UITextField!
+ 
+    
     @IBOutlet weak var companyAddress: UITextField!
+    
     @IBOutlet weak var companyDescription: UITextField!
     
+    
     @IBOutlet weak var companyPhoneNumber: UITextField!
-    @IBOutlet weak var companyWebsite: UITextField!
+    
+
+    
     
     @IBOutlet weak var timeDisplayed: UILabel!
     
-    @IBOutlet weak var meetingDescription: UITextField!
-    
-    
     @IBOutlet weak var pickerView: UIDatePicker!
     
+    @IBOutlet weak var meetingDescription: UITextField!
+    
+    @IBOutlet weak var companyWebsite: UITextField!
+    
     @IBAction func datePickerSelected(_ sender: UIDatePicker) {
-    updateTimeDisplayed(date: pickerView.date)
-}
-    
-    let dateLabelIndexPath = IndexPath(row: 0, section: 5)
-    let datePickerIndexPath = IndexPath(row: 1, section: 5)
-    let notesTextViewIndexPath = IndexPath(row: 0, section: 6)
-    
-    let normalCellHeight: CGFloat = 44
-    let largeCellHeight: CGFloat = 200
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt
-    indexPath: IndexPath) -> CGFloat {
-        switch indexPath {
-        case datePickerIndexPath:
-            return isPickerHidden ? 0 :
-            largeCellHeight
-        case notesTextViewIndexPath:
-            return largeCellHeight
-        default:
-            return normalCellHeight
-        }
+        updateTimeDisplayed(date: pickerView.date)
     }
+   
 
- 
-    override func tableView(_ tableView: UITableView, didSelectRowAt
-    indexPath: IndexPath) {
-        if indexPath == dateLabelIndexPath {
-            isPickerHidden = !isPickerHidden
-            timeDisplayed.textColor = isPickerHidden ? .black :
-            tableView.tintColor
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }
-    }
-    //
-    
-    var isPickerHidden = true
-
-    
-    func updateTimeDisplayed(date: Date) {
-        timeDisplayed.text = Appointment.dateFormatter.string(from: date)
-    }
-
-    func updateSaveButtonState() {
-        let text = meetingTitle.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
-    }
-    
-    
-    
-    @IBAction func textEditingChanged(_ sender: UITextField) {
-        updateSaveButtonState()
-    }
-    
-    
-    @IBAction func returnPressed(_ sender: UITextField) {
-        meetingTitle.resignFirstResponder()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender:
-    Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard segue.identifier == "saveUnwind" else { return }
-        
-        let title = meetingTitle.text!
-        let appLastName = lastName.text!
-        let appFirstName = firstName.text!
-        let nameCompany = companyName.text!
-        let addressCompany = companyAddress.text!
-        let descriptionCompany = companyDescription.text!
-        let phone = companyPhoneNumber.text!
-        let appWebsite = companyWebsite.text!
-        let appDate = Appointment.dateFormatter.string(from: pickerView.date)
-        let descriptionMeeting = meetingDescription.text!
-        
-        currentAppointment = Appointment(companyName: nameCompany, companyDescription: descriptionCompany, firstName: appFirstName, lastName: appLastName, address: addressCompany, date: appDate, phoneNumber: phone, website: appWebsite, type: AppointmentType.once, meetingDescription: descriptionMeeting, appointmentTitle: title, dateCode: pickerView.date)
-        currentAppointment!.id = currentAppointmentID
-        
-        if (isRequest) {
-            
-            requestsController?.updateList(id: currentAppointmentID)
-            
-        }
-
-        
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -147,10 +70,10 @@ class AddAppointmentTableViewController: UITableViewController {
             pickerView.date = Date().addingTimeInterval(24*60*60)
         }
         
-        
         updateTimeDisplayed(date: pickerView.date)
         updateSaveButtonState()
-        
+
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -176,10 +99,41 @@ class AddAppointmentTableViewController: UITableViewController {
         default: return 1;
         }
     }
-
-    @IBAction func cancelEditing(_ sender: Any) {
-        dismiss(animated: true)
+    
+    func updateSaveButtonState() {
+        let text = meetingTitle.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
+
+    @IBAction func titleChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    func updateTimeDisplayed(date: Date) {
+        timeDisplayed.text = Appointment.dateFormatter.string(from: date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender:
+    Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == "saveUnwind" else { return }
+        
+        let title = meetingTitle.text!
+        let appLastName = lastName.text!
+        let appFirstName = firstName.text!
+        let nameCompany = companyName.text!
+        let addressCompany = companyAddress.text!
+        let descriptionCompany = companyDescription.text!
+        let phone = companyPhoneNumber.text!
+        let appWebsite = companyWebsite.text!
+        let appDate = Appointment.dateFormatter.string(from: pickerView.date)
+        let descriptionMeeting = meetingDescription.text!
+        
+        currentAppointment = Appointment(companyName: nameCompany, companyDescription: descriptionCompany, firstName: appFirstName, lastName: appLastName, address: addressCompany, date: appDate, phoneNumber: phone, website: appWebsite, type: AppointmentType.once, meetingDescription: descriptionMeeting, appointmentTitle: title, dateCode: pickerView.date)
+
+        
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -236,3 +190,4 @@ class AddAppointmentTableViewController: UITableViewController {
     */
 
 }
+*/
