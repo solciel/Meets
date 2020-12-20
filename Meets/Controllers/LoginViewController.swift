@@ -27,14 +27,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(_ sender: Any) {
         
-        if (username.text == nil || password.text == nil || !(username.text == "rafael.alfonzo@outlook.com" && password.text == "test")) {
-            errorMessage.isHidden = false
-            self.view.setNeedsDisplay()
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "loggedIn")
-            Switch.updateRoot()
-        }
+        //deleted login logic
+        
+        
+        UserDefaults.standard.set(true, forKey: "loggedIn")
+        Switch.updateRoot()
+        
         
         
     }

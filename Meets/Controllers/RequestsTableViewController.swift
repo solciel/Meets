@@ -94,6 +94,20 @@ class RequestsTableViewController: UITableViewController {
                 
                 self.currentMessageID = emails.identifier!
                 
+                var sender = ""
+                let senderName = emails.payload?.headers!
+                for value in 0...(senderName!.count - 1) {
+                    
+                    if(senderName?[value].json!["name"] as! String == "From") {
+                        print("found from at " + String(value));
+                        print("found from at " + String(value));
+                        sender = senderName?[value].json!["value"] as! String
+                        print("found from: " + String(sender));
+                        print("found from: " + String(sender));
+                    }
+                }
+                
+                
                 let parts = emails.payload?.parts?.filter({ (part) -> Bool in
                     if part.mimeType == "text/plain"{
                         return true
@@ -104,6 +118,8 @@ class RequestsTableViewController: UITableViewController {
                     print("email data:");
                     let encodedBody = part.body!.data!
                     print(encodedBody + "\n\n")
+                    
+                
                     
                     let formattedEncodedBody = encodedBody.replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
                     
@@ -117,9 +133,33 @@ class RequestsTableViewController: UITableViewController {
                         let totalDate = month + " " + day + " at " + hour
                         print(totalDate)
                         
+                        var firstname = sender.components(separatedBy: " ").first
+                        
+                        var lastname = sender.components(separatedBy: " ")[1]
+                        
+                        
+                        
+                        
                         //add to appointents array
-                        var currentAppointment = Appointment(companyName: "", companyDescription: "", firstName: "Rafael", lastName: "Alfonzo", address: "", date: totalDate, phoneNumber: "", website: "", type: AppointmentType.once, meetingDescription: "", appointmentTitle: "Rafael on " + totalDate, dateCode: Date())
+                        var currentAppointment = Appointment(companyName: "", companyDescription: "", firstName: firstname!, lastName: lastname, address: "", date: totalDate, phoneNumber: "", website: "", type: AppointmentType.once, meetingDescription: "", appointmentTitle: sender + totalDate, dateCode: Date())
                         currentAppointment.id = self.currentMessageID
+                        
+                        
+                        
+                        //parse date
+                        var hourInt = Int(hour.prefix(1))!
+                        if(hour.contains("pm")) {
+                            hourInt = hourInt + 12
+                        }
+                        let dayInt = Int(day)!
+                        let monthInt = self.parseMonthInt(month: month)
+                        
+                        currentAppointment.hour = hourInt
+                        currentAppointment.day = dayInt
+                        currentAppointment.month = monthInt
+                        currentAppointment.year = 2020
+                        
+                        //parsing ended
                         
                         let newIndexPath = IndexPath(row: self.appointments.count, section: 0)
                         
@@ -226,6 +266,35 @@ class RequestsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    
+    func parseMonthInt(month: String) -> Int {
+        switch month {
+        case "January":
+            return 1
+        case "February":
+            return 2
+        case "March":
+            return 3
+        case "April":
+            return 4
+        case "May":
+            return 5
+        case "June":
+            return 6
+        case "July":
+            return 7
+        case "August":
+            return 8
+        case "September":
+            return 9
+        case "October":
+            return 10
+        case "November":
+            return 11
+        default:
+            return 12
+        }
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

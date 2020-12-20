@@ -25,6 +25,10 @@ struct Appointment {
     var appointmentTitle: String = ""
     var id : String = "";
     var status: AppointmentStatus = .pending
+    var hour = 0;
+    var day = 0;
+    var month = 0;
+    var year = 0;
     
     init(companyName: String, companyDescription: String, firstName: String, lastName: String, address: String, date: String, phoneNumber: String, website: String, type: AppointmentType, meetingDescription: String, appointmentTitle: String, dateCode: Date) {
         

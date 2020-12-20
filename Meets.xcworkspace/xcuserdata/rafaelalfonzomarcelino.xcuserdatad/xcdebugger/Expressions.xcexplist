@@ -11,21 +11,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RequestsTableViewController.getInboxMessages():RequestsTableViewController.swift">
+         contextName = "closure #1 in AddAppointmentTableViewController.prepare(for:sender:):AddAppointmentTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response">
+               value = "event.startDate">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "HomeViewController.toggleAuthUI():HomeViewController.swift">
+         contextName = "closure #1 in RequestsTableViewController.processMessages(response:service:):RequestsTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "signInButton.isHidden">
+               value = "emails">
             </PersistentString>
             <PersistentString
-               value = "signOutButton.isHidden">
+               value = "emails.payload">
+            </PersistentString>
+            <PersistentString
+               value = "senderName?[value]">
+            </PersistentString>
+            <PersistentString
+               value = "emails.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "value">
+            </PersistentString>
+            <PersistentString
+               value = "senderName">
+            </PersistentString>
+            <PersistentString
+               value = "part.headers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -49,13 +64,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in RequestsTableViewController.processMessages(response:service:):RequestsTableViewController.swift">
+         contextName = "HomeViewController.toggleAuthUI():HomeViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "emails.identifier">
+               value = "signInButton.isHidden">
             </PersistentString>
             <PersistentString
-               value = "emails.payload">
+               value = "signOutButton.isHidden">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RequestsTableViewController.getInboxMessages():RequestsTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

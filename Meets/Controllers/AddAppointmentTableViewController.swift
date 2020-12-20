@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class AddAppointmentTableViewController: UITableViewController {
     
@@ -111,12 +112,115 @@ class AddAppointmentTableViewController: UITableViewController {
         let appDate = Appointment.dateFormatter.string(from: pickerView.date)
         let descriptionMeeting = meetingDescription.text!
         
+        
+        var hour = self.currentAppointment!.hour
+        var day = self.currentAppointment!.day
+        var month = self.currentAppointment!.month
+        
         currentAppointment = Appointment(companyName: nameCompany, companyDescription: descriptionCompany, firstName: appFirstName, lastName: appLastName, address: addressCompany, date: appDate, phoneNumber: phone, website: appWebsite, type: AppointmentType.once, meetingDescription: descriptionMeeting, appointmentTitle: title, dateCode: pickerView.date)
         currentAppointment!.id = currentAppointmentID
+        self.currentAppointment!.hour = hour
+        self.currentAppointment!.day = day
+        self.currentAppointment!.month = month
+        self.currentAppointment!.year = 2020
         
+        //adjust requests table
         if (isRequest) {
-            
             requestsController?.updateList(id: currentAppointmentID)
+        }
+        
+        //add event to calendar
+        
+        let eventStore: EKEventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event) { (granted,error) in
+            if (granted) && (error == nil) {
+                print("granted access to event store")
+                let event:EKEvent = EKEvent(eventStore: eventStore)
+               
+                
+                //create dates
+
+                /*
+                let startingDateFormatter = DateFormatter()
+                startingDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                startingDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                startingDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                
+                //hardcoded to fix
+                let timeString1 = "2020-01-23-T13:00:00-08:00"
+                let timeString2 = "2020-01-23-T13:01:00-08:00"
+                
+                let sampleString = "2020-12-19T16:39:57-08:00"
+                
+        
+                //dates created
+                let datetime = startingDateFormatter.date(from: timeString1)
+                
+                let datetime2 = startingDateFormatter.date(from: timeString2)
+                */
+                
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy HH:mm:ss Z"
+                
+                formatter.locale = Locale.current
+                formatter.timeZone = TimeZone.current
+                
+                var hourString = ""
+                var dayString = ""
+                var monthString = ""
+                
+                if(hour < 10) {
+                    hourString = "0" + String(hour)
+                }
+                else {
+                    hourString = String(hour)
+                }
+                if(day < 10) {
+                    dayString = "0" + String(day)
+                }
+                else {
+                    dayString = String(hour)
+                }
+                if(month < 10) {
+                    monthString = "0" + String(month)
+                }
+                else {
+                    monthString = String(hour)
+                }
+                
+                var dateString = "";
+                dateString = dateString + dayString + "-";
+                dateString = dateString + monthString + "-";
+                dateString = dateString + String(self.currentAppointment!.year)
+                dateString = dateString + " " + hourString + ":00:00 +0000"
+
+                //let datetime = formatter.date(from: "03-01-2020 20:00:00 +0000")
+                let datetime = formatter.date(from: dateString)
+                let datetime2 = formatter.date(from: dateString)
+                print(datetime!)
+            
+                
+                event.title = self.currentAppointment!.appointmentTitle
+                
+               event.startDate = datetime
+               event.endDate = datetime2
+                
+                event.notes = "notes here"
+                
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                }
+                catch let error as NSError{
+                    print("error: \(error)")
+                }
+                print("save event")
+            }
+            else {
+                print("error: \(error)")
+            }
             
         }
 
